@@ -82,8 +82,11 @@ WSGI_APPLICATION = 'demo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            'host': 'mongodb+srv://SDP37_members:UConnsdp37@sdpticketingsystem.mkbpfj7.mongodb.net/?retryWrites=true&w=majority',
+            'name': 'TicketingSystem'
+        },
     }
 }
 

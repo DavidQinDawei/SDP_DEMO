@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 import json
 from admins.models import Admins
-from dpmember.models import Dpmember
+from dpmember.models import dpmember
 from student.models import Student
 def admins_dispatcher(request):
 
@@ -32,7 +32,7 @@ def add_user(request):
             department = data['department']
         )
     elif type == 'dpmember':
-        entry = Dpmember.objects.creates(
+        entry = dpmember.objects.creates(
             name = data['name'],
             email = data['email'],
             netid = data['netid'],
@@ -76,8 +76,8 @@ def find_user(request):
             return ({'return': 1, 'error': 'Cannot find the user by ID'})
     elif type == 'dpmember':
         try:
-            user = Dpmember.objects.get(id == userid)
-        except Dpmember.DoesNotExist:
+            user = dpmember.objects.get(id == userid)
+        except dpmember.DoesNotExist:
             return ({'return': 1, 'error': 'Cannot find the user by ID'})
     elif type == 'student':
         try:
